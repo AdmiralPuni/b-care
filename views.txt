@@ -1,3 +1,11 @@
 v_donor
 
 select a.id, b.id as donor_id, name, status, type, blood_type, req, donor_date, b.created from user a, request_donor b, profile c where a.id = b.user_id and a.id = c.user_id;
+
+v_user_profile
+
+select `donor`.`user_id` AS `user_id`,`user`.`name` AS `name`,`donor`.`blood_type` AS `blood_type`,`donor`.`nik` AS `nik`,`donor`.`tempat_lahir` AS `tempat_lahir`,`donor`.`tanggal_lahir` AS `tanggal_lahir`,`donor`.`jenis_kelamin` AS `jenis_kelamin`,`donor`.`pekerjaan` AS `pekerjaan`,`donor`.`alamat` AS `alamat`,`donor`.`domisili` AS `domisili`,`donor`.`no_hp` AS `no_hp`,`donor`.`no_kartu` AS `no_kartu`,`donor`.`created` AS `created` from (`user` join `donor`) where (`user`.`id` = `donor`.`user_id`)
+
+v_front_donor
+
+select `a`.`id` AS `id`,`b`.`name` AS `name`,`a`.`status` AS `status`,`a`.`type` AS `type`,`a`.`req` AS `req`,`a`.`donor_date` AS `donor_date` from (`request_donor` `a` join `user` `b`) where (`a`.`user_id` = `b`.`id`)
