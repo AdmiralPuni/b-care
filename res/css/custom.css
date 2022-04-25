@@ -1,0 +1,40 @@
+:root {
+    --bs-primary: #BA0F30;
+    --bs-secondary: #821D30;
+    --bs-success: #5FC790;
+    --bs-warning: #FFA600;
+    --bs-danger: #FF5630;
+    --bs-info: #1CA7EC;
+    --bc-primary: #BA0F30;
+    --bc-secondary: #821D30;
+    --bc-success: #5FC790;
+    --bc-warning: #FFA600;
+    --bc-danger: #FF5630;
+    --bc-info: #1CA7EC;
+}
+
+.bg-bc-primary {
+    background-color: #BA0F30;
+}
+
+.bg-bc-secondary {
+    background-color: #821D30;
+}
+
+.border-bc-primary {
+    border-color: #BA0F30 !important;
+}
+
+
+
+.btn-primary {
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}

@@ -1,0 +1,3 @@
+v_donor
+
+select a.id, b.id as donor_id, name, status, type, blood_type, req, donor_date, b.created from user a, request_donor b, profile c where a.id = b.user_id and a.id = c.user_id;

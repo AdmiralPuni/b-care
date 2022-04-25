@@ -1,0 +1,83 @@
+Semua API menggunakan secret key di header
+
+secret = '1234'
+
+
+========== REQUEST DARAH 
+
+URL = api/v1/request/new
+METHOD = POST
+DATA
+    type
+        (Uppercase)
+        PLASMA
+        BLOOD
+    name
+    address
+    blood_type
+        (Uppercase ex = AB+ / AB- / O-)
+    reason
+
+========== DONOR DARAH
+
+URL = api/v1/donor/new
+METHOD = POST
+DATA
+    user_id
+    type
+        (Uppercase)
+        PLASMA
+        BLOOD
+    form_answers
+        (Jawaban form panjang)
+    req
+        (ex = {"PCR": "NEGATIVE"})
+
+
+========== USER MANAGEMENT
+
+URL = api/v1/user/new
+METHOD = POST
+DATA
+    name
+    email
+    password
+    level
+        10 = user biasa
+        0  = admin
+
+
+URL = api/v1/user/verify
+METHOD = POST
+DATA
+    email
+    password
+RESULT
+    idenfitier = simpan di cache
+
+URL =  api/v1/profile/new
+METHOD = POST
+DATA
+    user_id
+    nik
+    tempat_lahir
+    jenis_kelamin
+        (Uppercase)
+        L
+        P
+    pekerjaan
+    alamat
+    domilisi
+    no_hp
+    no_kartu
+        (Belum otomatis)
+
+========== STOCK MANAGEMENT
+
+URL = api/v1/stock/blood/update
+METHOD = POST
+DATA
+    blood_type
+        (Uppercase ex = AB+ / AB- / O-)
+    amount
+        (new amount)
