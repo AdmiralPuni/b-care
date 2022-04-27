@@ -54,4 +54,9 @@ class Pages extends CI_Controller
     {
         $this->load->view('docs');
     }
+
+    public function reports()
+    {
+        $this->load->view('reports');
+    }
 }

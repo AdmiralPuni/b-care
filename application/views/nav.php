@@ -35,6 +35,13 @@
         </a>
     </div>
     <div class="col px-0 mb-2">
+        <a href="reports">
+            <button class="btn btn-outline-dark rounded-0 w-100 fs-4 text-start" id="nav-report">
+                <i class="bi bi-file-earmark-pdf"></i> Laporan
+            </button>
+        </a>
+    </div>
+    <div class="col px-0 mb-2">
         <a href="stock">
             <button class="btn btn-outline-dark rounded-0 w-100 fs-4 text-start" id="nav-stock">
                 <i class="bi bi-box"></i> Stock

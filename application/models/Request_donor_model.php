@@ -56,8 +56,8 @@ class request_donor_model extends CI_Model {
     }
 
     public function get_plasma_display(){
-        $this->db->select('id, name, donor_date, req, status');
-        $this->db->from('v_front_donor');
+        $this->db->select('*');
+        $this->db->from('v_donor');
         $this->db->where('type', 'PLASMA');
         $query = $this->db->get();
         return $query->result();

@@ -99,6 +99,7 @@ $route['profiles'] = 'pages/profiles';
 $route['stock'] = 'pages/stock';
 $route['events'] = 'pages/events';
 $route['docs'] = 'pages/docs';
+$route['reports'] = 'pages/reports';
 
 //verification
 $route['verification/verify'] = 'api_user/verify_email';

@@ -31,7 +31,40 @@
 </head>
 
 <body>
-    <div class="container p-2 px-0 px-md-2">
+    <div class="modal fade" tabindex="-1" id="modal-print">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr id="table-print-header">
+                                    <th>ID</th>
+                                    <th>Nama</th>
+                                    <th>Status</th>
+                                    <th>Tanggal Donor</th>
+                                    <th>Data</th>
+                                    <th>Status Validasi</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-print">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="btn-browser-print">Print Tabel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-2 px-0 px-md-2">
         <div class="row m-0">
             <div class="col-12 mb-2 sticky-top p-0 px-0">
                 <div class="d-block fs-2 fw-normal bg-white border-bottom border-5 border-bc-primary text-dark p-3 py-2 shadow">
@@ -51,28 +84,51 @@
                 <?php include "nav.php" ?>
             </div>
             <div class="col-12 col-md-9 px-1 pe-md-0 ps-md-2" id="home-container">
-                <!-- 
-                <div class="d-block bg-bc-primary text-white fs-4 p-2">
-                    Donor Plasma
-                </div>
-                
-                <div class="container-fluid p-2 bg-white shadow mb-3">
-                    <div class="row row-cols-1 row-cols-md-1 m-0">
-                        <div class="col px-md-0">
-                            <button class="btn btn-outline-dark rounded-0 fs-4 w-100 active" id="button-donor">
-                                <i class="bi bi-arrow-down-circle"></i> Donor
-                            </button>
+                <div class="container-fluid p-0 shadow">
+                    <div class="d-block  bg-bc-primary text-white fs-4 p-2">
+                        Search
+                    </div>
+                    <div class="container-fluid p-2 bg-white mb-3">
+                        <div class="d-flex justify-content-center">
+                            <div class="flex-fill me-2 fs-6 align-self-center">
+                                <div class="row row-cols-1 row-cols-md-4 m-0">
+                                    <div class="col px-0 pe-md-2 mb-2">
+                                        <label for="distinct-blood_type">Gol. Darah</label>
+                                        <select class="form-select fs-5" id="distinct-blood_type">
+
+                                        </select>
+                                    </div>
+                                    <div class="col px-0 pe-md-2 mb-2">
+                                        <label for="distinct-status">Status</label>
+                                        <select class="form-select fs-5" id="distinct-status">
+
+                                        </select>
+                                    </div>
+                                    <div class="col px-0 pe-md-2 mb-2">
+                                        <label for="distinct-year_month">Tahun-Bulan</label>
+                                        <select class="form-select fs-5" id="distinct-year_month">
+
+                                        </select>
+                                    </div>
+                                    <div class="col px-0 pe-md-2 mb-2">
+                                        <label for="distinct-domisili">Domisili</label>
+                                        <select class="form-select fs-5" id="distinct-domisili">
+
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column">
+                                <button class="btn btn-outline-success fs-5 px-5 mb-1 py-1" id="btn-search">
+                                    Search
+                                </button>
+                                <button class="btn btn-outline-success fs-5 px-5 mt-1 py-1" id="btn-print">
+                                    Print
+                                </button>
+                            </div>
                         </div>
-                        
-                        <div class="col ps-md-0">
-                            <button class="btn btn-outline-dark rounded-0 fs-4 w-100" id="button-request">
-                                <i class="bi bi-arrow-up-square"></i> Permohonan
-                            </button>
-                        </div>
-                        
                     </div>
                 </div>
-                -->
                 <div class="d-block  bg-bc-primary text-white fs-4 p-2" id="table-title">
                     -
                 </div>
@@ -83,6 +139,7 @@
                                 <tr id="table-header">
                                     <th>ID</th>
                                     <th>Nama</th>
+                                    <th>Status</th>
                                     <th>Tanggal Donor</th>
                                     <th>Data</th>
                                     <th>Status Validasi</th>
@@ -109,20 +166,43 @@
     var table_header = {
         "donor": {
             "title": "Daftar Pasien Donor Plasma",
-            "header": ['ID', 'Nama', 'Tanggal Donor', 'Data', 'Status Validasi']
-        },
-        "request": {
-            "title": "Daftar Permohonan Plasma",
-            "header": ['Nama', 'Alamat', 'No. HP', 'Golongan Darah', 'Alasan Darurat', 'Timestamp']
+            "header": ['ID', 'Nama', 'Status', ' Gol. Darah', 'Alamat', 'Tambahan', 'Tanggal Donor', 'Tanggal Request']
         }
     };
+
+    var distinct_data = {
+        "blood_type": [],
+        "status": [],
+        "year_month": [],
+        "domisili": []
+    };
+
     var current_data;
     var current_table;
+    var filtered_data;
     var items_per_page = 10;
+
+    var print_modal = new bootstrap.Modal(document.getElementById('modal-print'))
 
     //on page ready load donor
     $(document).ready(function () {
         load_data("donor");
+    });
+
+    //on button print open the modal
+    $("#btn-print").click(function () {
+        print_modal.show();
+        if (current_data == filtered_data) {
+            fill_print_table(filtered_data);
+        } else {
+            fill_print_table(current_data);
+        }
+
+    });
+
+    //call print
+    $("#btn-browser-print").click(function () {
+        window.print();
     });
 
     function load_data(table) {
@@ -165,37 +245,136 @@
         });
     }
 
-    function fill_table(data, table, page) {
+    function fill_print_table(data) {
+        $("#print-table-body").empty();
+        for (var i = 0; i < data.length; i++) {
+            html = "<tr>";
+            //for each key in data
+            for (var key in data[i]) {
+                //ignore first key
+                if (key == "id" || key == "type") {
+                    continue;
+                }
+                html += "<td>" + data[i][key] + "</td>";
+            }
+            html += "</tr>";
+            $("#table-print").append(html);
+        }
+    }
+
+    function fill_table(data, table, page, rebuild_distinct = false) {
         $("#table-body").html("");
         for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
             html = "<tr>";
             //for each key in data
             for (var key in data[i]) {
-                if (table == "donor") {
-                    if (key == "status") {
-                        if (data[i][key] == 0) {
-                            data[i][key] = "Belum Validasi";
-                        }
-                        else {
-                            data[i][key] = "Sudah Validasi";
-                        }
+                //ignore first key
+                if (key == "id" || key == "type") {
+                    continue;
+                }
+                if (key == "status" && rebuild_distinct) {
+                    if (data[i][key] == "0") {
+                        data[i][key] = "Belum Validasi";
                     }
-                    else if (key == "req") {
-                        //remove characters other than alphabet
-                        data[i][key] = data[i][key].replace(/[^a-zA-Z:]/g, "");
+                    else {
+                        data[i][key] = "Sudah Validasi";
                     }
-
                 }
                 html += "<td>" + data[i][key] + "</td>";
 
+
+                //check for distinct data, only for keys in distinct_data
+                if (rebuild_distinct) {
+                    if (distinct_data[key] != undefined) {
+                        if (distinct_data[key].indexOf(data[i][key]) == -1) {
+                            distinct_data[key].push(data[i][key]);
+                        }
+                    }
+                    //fill year_month with donor_date
+                    if (key == "donor_date") {
+                        var date = new Date(data[i][key]);
+                        var year_month = date.getFullYear() + "-" + (date.getMonth() + 1);
+                        if (distinct_data["year_month"].indexOf(year_month) == -1) {
+                            distinct_data["year_month"].push(year_month);
+                        }
+                    }
+
+                }
             }
             html += "</tr>";
             $("#table-body").append(html);
         }
+
+        if (rebuild_distinct) {
+            for (var key in distinct_data) {
+                $("#distinct-" + key).empty();
+                $("#distinct-" + key).append('<option value="">Semua</option>');
+                for (var i = 0; i < distinct_data[key].length; i++) {
+                    $("#distinct-" + key).append('<option value="' + distinct_data[key][i] + '">' + distinct_data[key][i] + '</option>');
+                }
+            }
+        }
     }
 
+    //on btn search
+    $("#btn-search").click(function () {
+        distincts = {
+            "blood_type": $("#distinct-blood_type").val(),
+            "status": $("#distinct-status").val(),
+            "year_month": $("#distinct-year_month").val(),
+            "domisili": $("#distinct-domisili").val()
+        };
+
+        //remove if empty
+        for (var key in distincts) {
+            if (distincts[key] == "") {
+                delete distincts[key];
+            }
+        }
+
+        //if there's nothing left in distincts, fill with current_data
+        if (Object.keys(distincts).length == 0) {
+            load_data("donor");
+        }
+        else {
+            //copy current_data
+            var new_data = current_data.slice();
+            //search current data, if theres no match in the row then remove it
+            for (var i = 0; i < new_data.length; i++) {
+                var match = true;
+                for (var key in distincts) {
+                    //if key is year_month, perform date comparison
+                    if (key == "year_month") {
+                        var date = new Date(new_data[i]["donor_date"]);
+                        var year_month = date.getFullYear() + "-" + (date.getMonth() + 1);
+                        if (year_month != distincts[key]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                    else {
+                        if (new_data[i][key] != distincts[key]) {
+                            match = false;
+                            break;
+                        }
+                    }
+                }
+                if (!match) {
+                    //remoev the line
+                    new_data.splice(i, 1);
+                    i--;
+                }
+            }
+
+            filtered_data = new_data;
+
+            //fill table
+            fill_table(filtered_data, current_table, 0, false);
+        }
+    });
+
     function change_page(index) {
-        fill_table(current_data, current_table, index);
+        fill_table(current_data, current_table, index, true);
     }
 
     //change active button
