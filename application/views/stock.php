@@ -31,7 +31,7 @@
 </head>
 
 <body>
-    <div class="container p-2 px-0 px-md-2">
+    <div class="container-fluid p-2 px-0 px-md-2">
         <div class="row m-0">
             <div class="col-12 mb-2 sticky-top p-0 px-0">
                 <div class="d-block fs-2 fw-normal bg-white border-bottom border-5 border-bc-primary text-dark p-3 py-2 shadow">

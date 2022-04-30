@@ -74,6 +74,7 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 //production config
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',

@@ -31,7 +31,62 @@
 </head>
 
 <body>
-    <div class="container p-2 px-0 px-md-2">
+    <div class="modal" tabindex="-1" id="modal-detail">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="selected-id"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>ID</th>
+                            <td id="details-id"></td>
+                        </tr>
+                        <tr>
+                            <th>Golongan Darah</th>
+                            <td id="details-blood_type"></td>
+                        </tr>
+                        <tr>
+                            <th>Nama</th>
+                            <td id="details-name"></td>
+                        </tr>
+                        <tr>
+                            <th>TTL</th>
+                            <td id="details-ttl"></td>
+                        </tr>
+                        <tr>
+                            <th>Alamat</th>
+                            <td id="details-address"></td>
+                        </tr>
+                        <tr>
+                            <th>Domisili</th>
+                            <td id="details-domisili"></td>
+                        </tr>
+                        <tr>
+                            <th>No. HP</th>
+                            <td id="details-phone"></td>
+                        </tr>
+                        <tr>
+                            <th>No. Kartu</th>
+                            <td id="details-card"></td>
+                        </tr>
+                        <tr>
+                            <th>Pekerjaan</th>
+                            <td id="details-job"></td>
+                        </tr>
+
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid p-2 px-0 px-md-2">
         <div class="row m-0">
             <div class="col-12 mb-2 sticky-top p-0 px-0">
                 <div class="d-block fs-2 fw-normal bg-white border-bottom border-5 border-bc-primary text-dark p-3 py-2 shadow">
@@ -79,59 +134,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col p-0 ps-md-1" id="col-detail">
-                        <div class="d-block  bg-bc-primary text-white fs-4 p-2 text-end">
-                            <div class="d-flex bd-highlight">
-                                <div class="bd-highlight fs-5 p-2 me-auto" id="selected-id">
-
-                                </div>
-                                <button class="btn btn-outline-light fs-5" id="hide-detail">
-                                    <i class="bi bi-arrow-left"></i> Kembali
-                                </button>
-                            </div>
-                        </div>
-                        <div class="container-fluid p-2 bg-white shadow mb-3">
-                            <table class="table table-striped">
-                                <tr>
-                                    <th>ID</th>
-                                    <td id="details-id"></td>
-                                </tr>
-                                <tr>
-                                    <th>Golongan Darah</th>
-                                    <td id="details-blood_type"></td>
-                                </tr>
-                                <tr>
-                                    <th>Nama</th>
-                                    <td id="details-name"></td>
-                                </tr>
-                                <tr>
-                                    <th>TTL</th>
-                                    <td id="details-ttl"></td>
-                                </tr>
-                                <tr>
-                                    <th>Alamat</th>
-                                    <td id="details-address"></td>
-                                </tr>
-                                <tr>
-                                    <th>Domisili</th>
-                                    <td id="details-domisili"></td>
-                                </tr>
-                                <tr>
-                                    <th>No. HP</th>
-                                    <td id="details-phone"></td>
-                                </tr>
-                                <tr>
-                                    <th>No. Kartu</th>
-                                    <td id="details-card"></td>
-                                </tr>
-                                <tr>
-                                    <th>Pekerjaan</th>
-                                    <td id="details-job"></td>
-                                </tr>
-
-                            </table>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -142,9 +144,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="res/js/custom.js"></script>
 <script>
+
+    var modal_detail = new bootstrap.Modal(document.getElementById('modal-detail'))
     $("#col-detail").hide();
     var current_data;
-    var current_table;
     var items_per_page = 10;
 
     //on page ready load donor
@@ -216,23 +219,20 @@
     }
 
     function show_details(id) {
-        $("#col-table").slideUp(250, function () {
-            //fill details
-
-            id = id;
-            temp = current_data[id];
-            $("#selected-id").html("#" + temp['user_id']);
-            $("#details-id").text(temp['user_id']);
-            $("#details-blood_type").text(temp['blood_type']);
-            $("#details-name").text(temp['name']);
-            $("#details-ttl").text(temp['tempat_lahir'] + ", " + temp['tanggal_lahir']);
-            $("#details-address").text(temp['alamat']);
-            $("#details-domisili").text(temp['domisili']);
-            $("#details-phone").text(temp['no_hp']);
-            $("#details-card").text(temp['no_kartu']);
-            $("#details-job").text(temp['pekerjaan']);
-            $("#col-detail").slideDown(250);
-        });
+        //show modal
+        id = id;
+        temp = current_data[id];
+        $("#selected-id").html("#" + temp['user_id']);
+        $("#details-id").text(temp['user_id']);
+        $("#details-blood_type").text(temp['blood_type']);
+        $("#details-name").text(temp['name']);
+        $("#details-ttl").text(temp['tempat_lahir'] + ", " + temp['tanggal_lahir']);
+        $("#details-address").text(temp['alamat']);
+        $("#details-domisili").text(temp['domisili']);
+        $("#details-phone").text(temp['no_hp']);
+        $("#details-card").text(temp['no_kartu']);
+        $("#details-job").text(temp['pekerjaan']);
+        modal_detail.show();
     }
 
     //on click hide details

@@ -251,6 +251,7 @@
     delay = 250;
     apidata.forEach(element => {
         reply = "";
+        console.log( element.url);
         //send ajax request to get data
         setTimeout(() => {
             $.ajax({

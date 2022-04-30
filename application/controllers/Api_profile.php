@@ -74,7 +74,12 @@ class Api_profile extends CI_Controller {
         //set to upper case
         $concat_name = strtoupper($concat_name);
         //generate no_kartu
-        $data['no_kartu'] = "3577DG" . $concat_name . $data['user_id'];
+        $card_end_number = $data['user_id'];
+        //add zero if number is less than 10000
+        if (strlen($card_end_number) < 4) {
+            $card_end_number = str_pad($card_end_number, 4, '0', STR_PAD_LEFT);
+        }
+        $data['no_kartu'] = "3577DG" . $concat_name . $card_end_number;
 
         //check for empty fields
         foreach (array_keys($data) as $key) {
@@ -132,7 +137,12 @@ class Api_profile extends CI_Controller {
         //set to upper case
         $concat_name = strtoupper($concat_name);
         //generate no_kartu
-        $data['no_kartu'] = "3577DG" . $concat_name . $id;
+        $card_end_number = $id;
+        //add zero if number is less than 10000
+        if (strlen($card_end_number) < 4) {
+            $card_end_number = str_pad($card_end_number, 4, '0', STR_PAD_LEFT);
+        }
+        $data['no_kartu'] = "3577DG" . $concat_name . $card_end_number;
         
         $this->user_model->update_name($id, $userdata);
         $this->profile_model->update_donor($id, $data);

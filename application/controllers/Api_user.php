@@ -25,7 +25,7 @@ class Api_user extends CI_Controller {
         $config['smtp_host'] = 'ssl://mail.b-caremadiun.org';
         $config['smtp_port'] = '465';
         $config['smtp_user'] = 'noreply@b-caremadiun.org';
-        $config['smtp_pass'] = 'SteveBallmer';
+        $config['smtp_pass'] = '=~-+hg=p,WLt';
         $config['mailtype'] = 'html';
         $config['charset'] = 'iso-8859-1';
         $config['wordwrap'] = TRUE;
@@ -111,7 +111,7 @@ class Api_user extends CI_Controller {
                 $this->send_verification_email($email, $id, $verification_code);
                 echo json_encode(array('status' => 'success', 'message' => 'Email sent'));
             }else{
-                echo json_encode(array('status' => 'error', 'message' => 'Email already sent'));
+                echo json_encode(array('status' => 'error', 'message' => 'Waiting...'));
             }
         }
 

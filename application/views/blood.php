@@ -209,7 +209,7 @@
 
 
         distincts = {
-            "Tanggal" : new Date().toLocaleDateString(),
+            "Tanggal": new Date().toLocaleDateString(),
             "Gol. Darah": $("#distinct-blood_type").val(),
             "Status": $("#distinct-status").val(),
             "Tahun-Bulan": $("#distinct-year_month").val(),
@@ -218,9 +218,10 @@
         //clear filter
         $("#print-filter").html("");
         //fill filter in print area
-        for(var key in distincts){
-            if(distincts[key] != ""){
-                $("#print-filter").append(key + " : " + distincts[key] + " ");            }
+        for (var key in distincts) {
+            if (distincts[key] != "") {
+                $("#print-filter").append(key + " : " + distincts[key] + " ");
+            }
         }
 
     });

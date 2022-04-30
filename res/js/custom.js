@@ -7,7 +7,7 @@ $(document).ready(function() {
 	if(filename=="dashboard"){
         $("#nav-dashboard").addClass("active");
 	}
-    else if(filename=="donors"){
+    else if(filename=="profiles"){
         $("#nav-donor-list").addClass("active");
     }
     else if(filename=="blood"){
@@ -21,6 +21,9 @@ $(document).ready(function() {
     }
     else if(filename=="events"){
         $("#nav-events").addClass("active");
+    }
+    else if(filename=="reports"){
+        $("#nav-report").addClass("active");
     }
 
 

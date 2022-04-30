@@ -12,7 +12,11 @@ class email_model extends CI_Model {
     }
 
     function current_time_iso(){
-        return date('Y-m-d H:i:s');
+        //set date to local timezone
+        $timezone = new DateTimeZone('Asia/Jakarta');
+        $date = new DateTime();
+        $date->setTimezone($timezone);
+        return $date->format('Y-m-d H:i:s');
     }
 
     function insert_verification($data){
@@ -75,10 +79,13 @@ class email_model extends CI_Model {
         $last_sent = $result->last_send;
         $current_time = $this->current_time_iso();
         $diff = strtotime($current_time) - strtotime($last_sent);
+        //if diff is more than 60 seconds, return true
         if($diff > 60){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
 }
 
