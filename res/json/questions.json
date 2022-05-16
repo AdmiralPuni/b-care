@@ -1,0 +1,879 @@
+{
+    "version": "1",
+    "questions": [
+        {
+            "page": [
+                {
+                    "mainTitle": "",
+                    "listQuestion": [
+                        {
+                            "type": "text",
+                            "name": "q1",
+                            "title": "No. KTP"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q2",
+                            "title": "Nama Lengkap Pendonor"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q3",
+                            "title": "Tempat, Tanggal lahir"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q4",
+                            "title": "Umur"
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q5",
+                            "title": "Jenis Kelamin",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Laki-laki"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Perempuan"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "text",
+                            "name": "q6",
+                            "title": "No. Kartu"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q7",
+                            "title": "Pekerjaan"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q8",
+                            "title": "Alamat"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q9",
+                            "title": "No. HP"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Penghargaan yang telah diterima",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "10x"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "25x"
+                                },
+                                {
+                                    "id": 3,
+                                    "name": "50x"
+                                },
+                                {
+                                    "id": 4,
+                                    "name": "75x"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q2",
+                            "title": "Bersediakah saudara donor pada waktu bulan puasa ?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q3",
+                            "title": "Bersediakah saudara donor saat dibutuhkan untuk komponen darah tertentu ?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "date",
+                            "name": "q4",
+                            "title": "Donor terakhir pada tanggal?"
+                        },
+                        {
+                            "type": "text",
+                            "name": "q5",
+                            "title": "Sekarang donor yang ke?"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Dalam Hari Ini :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Merasa sehat, dan tidak sedang flu/batuk/demam/pusing?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q2",
+                            "title": "Apakah Anda semalam tidur minimal 4 jam?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Dalam 3 Hari Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda sedang minum obat?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q2",
+                            "title": "Apakah Anda sedang minum jamu?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Dalam Waktu 1 Minggu Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda mencabut gigi?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Dalam Waktu 2 Minggu Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda mengalami demam lebih dari 38 derajat celcius?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Dalam 6 Minggu Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Wanita : Apakah saat ini Anda pernah/sedang hamil?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Dalam 2 Bulan Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda mendonorkan darah, trombosit, atau plasma?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q2",
+                            "title": "Apakah Anda menerima vaksin atau suntikan lain?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q2",
+                            "title": "Apakah Anda pernah kontak dengan orang yang pernah menerima vaksinasi smallpox?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Dalam 4 Bulan Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda mendonorkan 2 kantong sel darah merah melalui proses aferesis?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Wanita : Apakah Anda saat ini sedang menyusui?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Dalam 1 Tahun Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah menerima transfusi darah?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah menerima transpalasi organ?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah cangkok tulang untuk kulit?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah tusuk jarum medis tanpa sengaja?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berhubungan seksual dengan penderita HIV/AIDS?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berhubungan seksual dengan PSK?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berhubungan seksual dengan pengguna narkoba jarum suntik?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Dalam 1 Tahun Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berhubungan dengan pengguna konsentrat faktor pembekuan?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Wanita : Apakah Anda pernah berhubungan seksual dengan laki-laki biseksual?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berhubungan seksual dengan penderita hepatitis?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah tinggal bersama penderita hepatitis?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda memiliki tato?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda menindik telinga atau bagian tubuh lain?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda sedang atau pernah mendapat pengobatan sifilis atau GO(Kencing nanah)?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Dalam 1 Tahun Terakhir :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah ditahan/dipenjara dalam waktu 72 jam?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda pernah berada diluar wilayah indonesia?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Apakah Anda menerima uang, obat atau pembayaran lainnya untuk seks?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Laki-laki : Apakah Anda pernah berhubungan seks dengan  laki-laki?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "mainTitle": "Tahun 1980 sampai sekarang :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Tinggal 5 tahun atau lebih di Eropa?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Pernah menerima tranfusi darah di Inggris?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Tinggal 3 bulan atau lebih di Inggris?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Tahun 1980 sampai sekarang :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Mendapat hasil positif untuk HIV/AIDS?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menggunakan jarum suntik untuk obat-obatan?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menggunakan konsentrat untuk faktor pembekuan?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menderita hepatitis?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menderita malaria?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menderita kanker?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Bermasalah dengan jantung atau paru?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Menderita pendarahan atau penyakit yang berhubungan dengan darah?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "page": [
+                {
+                    "mainTitle": "Tahun 1980 sampai sekarang :",
+                    "listQuestion": [
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Berhubungan seksual dengan orang yang tinggal di Afrika?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "radiobutton",
+                            "name": "q1",
+                            "title": "Pernah tinggal di Afrika?",
+                            "option": [
+                                {
+                                    "id": 1,
+                                    "name": "Ya"
+                                },
+                                {
+                                    "id": 2,
+                                    "name": "Tidak"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
