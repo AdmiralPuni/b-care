@@ -55,10 +55,30 @@ class request_donor_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_blood_display_range($start_date, $end_date){
+        $this->db->select('*');
+        $this->db->from('v_donor');
+        $this->db->where('type', 'BLOOD');
+        $this->db->where('created >=', $start_date);
+        $this->db->where('created <=', $end_date);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function get_plasma_display(){
         $this->db->select('*');
         $this->db->from('v_donor');
         $this->db->where('type', 'PLASMA');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function get_plasma_display_range($start_date, $end_date){
+        $this->db->select('*');
+        $this->db->from('v_donor');
+        $this->db->where('type', 'PLASMA');
+        $this->db->where('created >=', $start_date);
+        $this->db->where('created <=', $end_date);
         $query = $this->db->get();
         return $query->result();
     }

@@ -31,7 +31,45 @@
 </head>
 
 <body>
-    <div class="container-fluid p-2 px-0 px-md-2">
+    <div class="container-fluid p-2 px-0 px-md-2" id="print-area">
+        <div class="d-block fs-2 fw-normal bg-white border-bottom border-5 border-bc-primary text-dark p-3 py-2 mb-3">
+            <div class="d-flex justify-content-between">
+                <span class="d-flex justify-content-center">
+                    <img class="me-2" height="48" src="res/images/icon.png" alt="">B-Care
+                </span>
+                <button class="btn btn-outline-dark p-1 collapsed d-md-none" data-bs-toggle="collapse" data-bs-target="#menu-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="d-flex">
+            <div class="flex-fill" id="print-filter">
+
+            </div>
+            <button type="button" class="btn btn-secondary me-2" id="btn-close-print">Close</button>
+            <button type="button" class="btn btn-primary" id="btn-browser-print">Print Tabel</button>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr id="table-print-header">
+                        <th>ID</th>
+                        <th>Nama</th>
+                        <th>Status</th>
+                        <th>Tanggal Donor</th>
+                        <th>Data</th>
+                        <th>Status Validasi</th>
+                    </tr>
+                </thead>
+                <tbody id="table-print">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container-fluid p-2 px-0 px-md-2" id="main-area">
         <div class="row m-0">
             <div class="col-12 mb-2 sticky-top p-0 px-0">
                 <div class="d-block fs-2 fw-normal bg-white border-bottom border-5 border-bc-primary text-dark p-3 py-2 shadow">
@@ -50,18 +88,46 @@
             <div class="col-12 col-md-3 mb-2 collapse d-md-block px-1 ps-md-0" id="menu-bar">
                 <?php include "nav.php" ?>
             </div>
-            <div class="col-12 col-md-9  px-1 px-md-0 ps-md-1" id="home-container">
-                <div class="row row-cols-1 row-cols-md-1 m-0">
-                    <div class="col p-0 ps-md-1">
-                        <div class="row row-cols-1 row-cols-md-1 m-0">
-                            <div class="col p-0">
-                                <div class="d-block  bg-bc-primary text-white fs-4 p-2">
-                                    Report
+            <div class="col-12 col-md-9 px-1 pe-md-0 ps-md-2" id="home-container">
+                <div class="row row-cols-1 row-cols-md-2 m-0">
+                    <div class="col p-0 pe-md-1">
+                        <div class="container-fluid bg-white p-0 shadow">
+                            <div class="d-block bg-bc-primary text-white fs-4 p-2">
+                                Donor Darah
+                            </div>
+                            <div class="d-block p-2">
+                                <div class="mb-3">
+                                    <label for="blood-start" class="form-label">Tgl. Mulai</label>
+                                    <input type="date" class="form-control" id="blood-start">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="blood-end" class="form-label">Tgl. Akhir</label>
+                                    <input type="date" class="form-control" id="blood-end">
+                                </div>
+                                <button class="btn btn-outline-success fs-5" id="btn-blood">
+                                    Tampilkan
+                                </button>
                             </div>
                         </div>
-                        <div class="container-fluid p-2 bg-white shadow mb-3">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                    <div class="col p-0 pe-md-1">
+                        <div class="container-fluid bg-white p-0 shadow">
+                            <div class="d-block bg-bc-primary text-white fs-4 p-2">
+                                Donor Plasma
+                            </div>
+                            <div class="d-block p-2">
+                                <div class="mb-3">
+                                    <label for="plasma-start" class="form-label">Tgl. Mulai</label>
+                                    <input type="date" class="form-control" id="plasma-start">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="plasma-end" class="form-label">Tgl. Akhir</label>
+                                    <input type="date" class="form-control" id="plasma-end">
+                                </div>
+                                <button class="btn btn-outline-success fs-5" id="btn-plasma">
+                                    Tampilkan
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,6 +140,126 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="res/js/custom.js"></script>
 <script>
+    //hide print area
+    $("#print-area").hide();
 
+    //set default date, end to now and start to 12 months ago
+    var now = new Date();
+    var start = new Date(now.getFullYear(), now.getMonth() - 12, now.getDate());
+    $("#blood-start").val(start.toISOString().substring(0, 10));
+    $("#blood-end").val(now.toISOString().substring(0, 10));
+    $("#plasma-start").val(start.toISOString().substring(0, 10));
+    $("#plasma-end").val(now.toISOString().substring(0, 10));
+
+
+    //on btn-blood click
+    $("#btn-blood").click(function() {
+        //get date
+        let start_date = $("#blood-start").val();
+        let end_date = $("#blood-end").val();
+
+        var api_key = "1234";
+        header = {
+            'secret': api_key
+        };
+
+        //get data
+        $.ajax({
+            url: "api/v1/donor/simple/blood/range",
+            method: "GET",
+            data: {
+                start_date: start_date,
+                end_date: end_date
+            },
+            headers: header,
+            dataType: "json",
+            success: function(data) {
+                data = data.data;
+
+                //set keys as table header
+                let keys = Object.keys(data[0]);
+                $("#table-print-header").html("");
+                for (let i = 0; i < keys.length; i++) {
+                    $("#table-print-header").append(`<th class="text-center">${keys[i]}</th>`);
+                }
+
+                //fill table
+                $("#table-print").html("");
+                for (let i = 0; i < data.length; i++) {
+                    let row = `<tr>`;
+                    for (let j = 0; j < keys.length; j++) {
+                        row += `<td class="text-center">${data[i][keys[j]]}</td>`;
+                    }
+                    row += `</tr>`;
+                    $("#table-print").append(row);
+                }
+
+                //show print area
+                $("#print-area").show();
+                $("#main-area").hide();
+            }
+        });
+    });
+
+    //on btn-blood click
+    $("#btn-plasma").click(function() {
+        //get date
+        let start_date = $("#plasma-start").val();
+        let end_date = $("#plasma-end").val();
+
+        var api_key = "1234";
+        header = {
+            'secret': api_key
+        };
+
+        //get data
+        $.ajax({
+            url: "api/v1/donor/simple/plasma/range",
+            method: "GET",
+            data: {
+                start_date: start_date,
+                end_date: end_date
+            },
+            headers: header,
+            dataType: "json",
+            success: function(data) {
+                data = data.data;
+
+                //set keys as table header
+                let keys = Object.keys(data[0]);
+                $("#table-print-header").html("");
+                for (let i = 0; i < keys.length; i++) {
+                    $("#table-print-header").append(`<th class="text-center">${keys[i]}</th>`);
+                }
+
+                //fill table
+                $("#table-print").html("");
+                for (let i = 0; i < data.length; i++) {
+                    let row = `<tr>`;
+                    for (let j = 0; j < keys.length; j++) {
+                        row += `<td class="text-center">${data[i][keys[j]]}</td>`;
+                    }
+                    row += `</tr>`;
+                    $("#table-print").append(row);
+                }
+
+                //show print area
+                $("#print-area").show();
+                $("#main-area").hide();
+            }
+        });
+    });
+
+    //call print
+    $("#btn-browser-print").click(function () {
+        window.print();
+    });
+
+    //show main and close print area
+    $("#btn-close-print").click(function () {
+        $("#main-area").show();
+        $("#print-area").hide();
+    });
 </script>
+
 </html>

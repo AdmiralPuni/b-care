@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['base_url'] = 'https://b-caremadiun.org/';
+//$config['base_url'] = 'localhost/b-care/';
 
 /*
 |--------------------------------------------------------------------------

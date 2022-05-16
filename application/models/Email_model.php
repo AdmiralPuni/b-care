@@ -23,6 +23,19 @@ class email_model extends CI_Model {
         $this->db->insert($this->table, $data);
     }
 
+    function delete_from_code($temp_code){
+        $this->db->where('temp_code', $temp_code);
+        $this->db->delete($this->table);
+    }
+
+    function user_id_from_code($temp_code){
+        $this->db->select('user_id');
+        $this->db->where('temp_code', $code);
+        $query = $this->db->get($this->table);
+        $result = $query->row();
+        return $result->user_id;
+    }
+
     function get_user_verification($id){
         $this->db->select('*');
         $this->db->where('user_id', $id);

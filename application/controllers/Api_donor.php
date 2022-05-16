@@ -29,6 +29,20 @@ class Api_donor extends CI_Controller {
         echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);
     }
 
+    public function get_simple_blood_range(){
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        $data = $this->request_donor_model->get_blood_display_range($start_date, $end_date);
+        echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);
+    }
+
+    public function get_simple_plasma_range(){
+        $start_date = $this->input->get('start_date');
+        $end_date = $this->input->get('end_date');
+        $data = $this->request_donor_model->get_plasma_display_range($start_date, $end_date);
+        echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);
+    }
+
     //get all blood request items
     public function get_blood()
     {
