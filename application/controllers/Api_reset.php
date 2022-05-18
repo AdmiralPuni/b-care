@@ -48,6 +48,13 @@ class Api_reset extends CI_Controller
 
         $email = $this->input->post('email');
         $id = $this->user_model->id_by_email($email);
+
+        //if id is not found
+        if (!$id) {
+            echo json_encode(array('status' => 'error', 'message' => 'Email not found'));
+            exit();
+        }
+
         $verification_code = hash('sha256', mt_rand(10000, 99999));
         $this->reset_model->insert(array('user_id' => $id, 'token' => $verification_code));
         //$this->send_password_reset_email($email, $id, $verification_code);
