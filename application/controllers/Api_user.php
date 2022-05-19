@@ -76,6 +76,8 @@ class Api_user extends CI_Controller
         }
 
         $verification_code = hash('sha256', mt_rand(10000, 99999));
+        //delete previous reset request
+        $this->reset_model->delete($id);
         $this->reset_model->insert(array('user_id' => $id, 'token' => $verification_code));
         $this->send_password_reset_email($input_email, $id, $verification_code);
 

@@ -21,6 +21,12 @@ class reset_model extends CI_Model {
         $this->db->delete($this->table);
     }
 
+    public function delete($id)
+    {
+        $this->db->where('user_id', $id);
+        $this->db->delete($this->table);
+    }
+
     public function user_id_by_token($token)
     {
         $this->db->where('token', $token);
