@@ -55,14 +55,10 @@ class user_model extends CI_Model {
         $query = $this->db->get('user');
         $result = $query->row();
         //if there's nothing return false
-        if($result->rowcount() == 0)
-        {
+        if (!$result) {
             return false;
         }
-        else
-        {
-            return $result->id;
-        }
+        return $result->id;
     }
 
     public function email_by_id($id)
