@@ -39,14 +39,6 @@ class Api_reset extends CI_Controller
 
     public function reset_password()
     {
-        
-        //get secret from header
-        $secret = $this->input->get_request_header('secret', true);
-        //verify secret, if location is verify_email, then ignore secret
-        if (!$this->api_model->verify_secret($secret)) {
-            echo json_encode(array('status' => 'error', 'message' => 'Invalid secret'));
-            die();
-        }
 
         $input_email = $this->input->post('input_email');
 
