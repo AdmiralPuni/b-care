@@ -42,18 +42,12 @@ class Api_reset extends CI_Controller
         //get secret from header
         $secret = $this->input->get_request_header('secret', true);
         //verify secret, if location is verify_email, then ignore secret
-        if (!$this->api_model->verify_secret($secret) && $this->uri->segment(2) != 'verify') {
+        if (!$this->api_model->verify_secret($secret)) {
             echo json_encode(array('status' => 'error', 'message' => 'Invalid secret'));
             die();
         }
 
         $email = $this->input->post('email');
-
-        //check if email is valid
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo json_encode(array('status' => 'error', 'message' => 'Invalid email', 'email' => $email));
-            die();
-        }
 
         $id = $this->user_model->id_by_email($email);
 
