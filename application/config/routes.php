@@ -109,5 +109,5 @@ $route['verification/resend'] = 'api_user/resend_email';
 $route['verification/status'] = 'api_user/verification_status';
 
 $route['verification/reset'] = 'api_reset/reset';
-$route['verification/reset/verify'] = 'api_user/reset_password';
+$route['verification/reset/verify'] = 'api_reset/reset_password';
 $route['verification/reset/change'] = 'api_reset/change_password';
