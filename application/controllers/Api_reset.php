@@ -51,7 +51,7 @@ class Api_reset extends CI_Controller
 
         //if id is not found
         if (!$id) {
-            echo json_encode(array('status' => 'error', 'message' => 'Email not found'));
+            echo json_encode(array('status' => 'error', 'message' => 'Email not found', 'email' => $email));
             exit();
         }
 
