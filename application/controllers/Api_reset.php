@@ -40,7 +40,7 @@ class Api_reset extends CI_Controller
     public function reset_password()
     {
 
-        $input_email = $this->input->post('input_email');
+        $input_email = $this->input->post('email');
 
         $id = $this->user_model->id_by_email($input_email);
 
