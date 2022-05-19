@@ -12,11 +12,12 @@ class Api_reset extends CI_Controller
         $this->load->model('email_model');
         $this->load->model('api_model');
         $this->load->model('reset_model');
+        $this->load->library('email');
     }
 
     public function send_password_reset_email($email, $id, $verification_code)
     {
-        $this->load->library('email');
+        
         $config['protocol'] = 'smtp';
         $config['smtp_host'] = 'ssl://mail.b-caremadiun.org';
         $config['smtp_port'] = '465';
@@ -59,7 +60,7 @@ class Api_reset extends CI_Controller
 
         $verification_code = hash('sha256', mt_rand(10000, 99999));
         $this->reset_model->insert(array('user_id' => $id, 'token' => $verification_code));
-        //$this->send_password_reset_email($email, $id, $verification_code);
+        $this->send_password_reset_email($email, $id, $verification_code);
 
         echo json_encode(array('status' => 'success', 'message' => 'Password reset email sent', 'code' => $verification_code));
     }
