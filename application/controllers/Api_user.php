@@ -64,11 +64,22 @@ class Api_user extends CI_Controller
 
     public function reset_password()
     {
-        $email = $this->input->post('email');
-        $id = $this->user_model->id_by_email($email);
+
+        $input_email = $this->input->post('email');
+
+        $id = $this->user_model->id_by_email($input_email);
+
+        //if id is not found
+        if (!$id) {
+            echo json_encode(array('status' => 'error', 'message' => 'Email not found', 'email' => $input_email));
+            die();
+        }
+
         $verification_code = hash('sha256', mt_rand(10000, 99999));
-        $this->email_model->insert_verification(array('user_id' => $id, 'temp_code' => $verification_code));
-        $this->send_password_reset_email($data['email'], $id, $verification_code);
+        $this->reset_model->insert(array('user_id' => $id, 'token' => $verification_code));
+        $this->send_password_reset_email($input_email, $id, $verification_code);
+
+        echo json_encode(array('status' => 'success', 'message' => 'Password reset email sent', 'code' => $verification_code, 'email' => $input_email), JSON_PRETTY_PRINT);
     }
 
     public function change_password()
