@@ -38,7 +38,7 @@ class Api_reset extends CI_Controller
 
     public function reset_password()
     {
-        $email = $this->input->post('email');
+        
         //get secret from header
         $secret = $this->input->get_request_header('secret', true);
         //verify secret, if location is verify_email, then ignore secret
@@ -47,7 +47,7 @@ class Api_reset extends CI_Controller
             exit();
         }
 
-        
+        $email = $this->input->post('input_email');
         $id = $this->user_model->id_by_email($email);
 
         //if id is not found
