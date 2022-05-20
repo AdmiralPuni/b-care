@@ -91,7 +91,7 @@
         {
             name: "DONOR - NEW",
             url: "api/v1/donor/new",
-            data: "user_id type(PLASMA/BLOOD) form_answers req(JSON)",
+            data: "user_id type(PLASMA/BLOOD) form_answers req(JSON) donor_date",
             method: "POST",
             form: {
 
@@ -241,6 +241,17 @@
                 user_id:"10"
             },
             desc: "Check Verification Status",
+            type: "input"
+        },
+        {
+            name: "PASSWORD_RESET - REQUEST",
+            url: "verification/reset/verify",
+            data: "email",
+            method: "POST",
+            form: {
+                
+            },
+            desc: "Request password reset",
             type: "input"
         }
     ]
