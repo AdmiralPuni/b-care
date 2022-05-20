@@ -69,6 +69,7 @@ class Api_donor extends CI_Controller {
             'user_id' => $this->input->post('user_id'),
             'type' => $this->input->post('type'),
             'form_answers' => $this->input->post('form_answers'),
+            'donor_date' => $this->input->post('donor_date'),
             'req' => $this->input->post('req')
         );
 
