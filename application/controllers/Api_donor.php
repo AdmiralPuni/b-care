@@ -84,7 +84,4 @@ class Api_donor extends CI_Controller {
         $this->request_donor_model->insert_request_donor($data);
         echo json_encode(array('status' => 'success', 'message' => 'Request item added', 'data' => $data), JSON_PRETTY_PRINT);
     }
-
-
-
 }
