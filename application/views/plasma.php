@@ -134,7 +134,7 @@
                 </div>
                 <div class="container-fluid p-2 bg-white shadow mb-3">
                     <div class="table-responsive">
-                        <table class="table table-striped">
+                        <table class="table table-striped align-middle">
                             <thead>
                                 <tr id="table-header">
                                     <th>ID</th>
@@ -270,6 +270,7 @@
             for (var key in data[i]) {
                 //ignore first key
                 if (key == "id" || key == "type") {
+                    id = data[i][key];
                     continue;
                 }
                 if (key == "status" && rebuild_distinct) {
@@ -280,7 +281,24 @@
                         data[i][key] = "Sudah Validasi";
                     }
                 }
+                //if key is req, add link
+                if (key == 'req') {
+                    data[i]['req'] = "<a target='_blank' href='./uploads/req/" + data[i]['req'] + "'>" + data[i]['req'] + "</a>";
+                }
+
+                //add a button to switch status
+                if (key == "status") {
+                    if (data[i][key] == "Belum Validasi") {
+                        data[i][key] = "<button class='btn btn-outline-success w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Sudah Validasi</button>";
+                    }
+                    else if (data[i][key] == "Sudah Validasi") {
+                        data[i][key] = "<button class='btn btn-outline-danger w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Belum Validasi</button>";
+                    }
+                }
+
                 html += "<td>" + data[i][key] + "</td>";
+
+
 
 
                 //check for distinct data, only for keys in distinct_data
@@ -375,6 +393,34 @@
 
     function change_page(index) {
         fill_table(current_data, current_table, index, true);
+    }
+
+    function switch_status(id, status) {
+        console.log(id + " " + status);
+        //ask for confirmation
+        if (confirm("Apakah anda yakin?")) {
+            $.ajax({
+                url: "./api/v1/donor/switch",
+                type: "POST",
+                headers: {
+                    'secret': '1234'
+                },
+                data: {
+                    id: id,
+                    status: status
+                },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == "success") {
+                        load_data(current_table);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
     }
 
     //change active button

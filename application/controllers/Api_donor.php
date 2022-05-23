@@ -57,6 +57,13 @@ class Api_donor extends CI_Controller {
         echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);
     }
 
+    public function switch_status(){
+        $id = $this->input->post('id');
+        $status = $this->input->post('status');
+        $this->request_donor_model->switch_status($id, $status);
+        echo json_encode(array('status' => 'success', 'message' => 'Status changed'), JSON_PRETTY_PRINT);
+    }
+
     public function get_both_single(){
         $user_id = $this->input->post('user_id');
         $data = $this->request_donor_model->get_both_single($user_id);
@@ -75,9 +82,32 @@ class Api_donor extends CI_Controller {
 
         //check for empty fields
         foreach (array_keys($data) as $key) {
+            //ignore req
+            if ($key == 'req') {
+                continue;
+            }
             if(empty($data[$key])){
                 echo json_encode(array('status' => 'error', 'message' => 'Please fill all fields', 'data' => $data), JSON_PRETTY_PRINT);
                 die();
+            }
+        }
+
+        //if type is plasma upload req
+        if ($data['type'] == 'PLASMA') {
+            $config['upload_path'] = './uploads/req/';
+            //file type is pdf
+            $config['allowed_types'] = 'pdf';
+            //replace filename with random string
+            $config['file_name'] = bin2hex(random_bytes(16));
+
+            $this->load->library('upload', $config);
+
+            if (!$this->upload->do_upload('req')) {
+                $error = array('error' => $this->upload->display_errors());
+                echo json_encode(array('status' => 'error', 'message' => 'Please upload a file', 'data' => $error), JSON_PRETTY_PRINT);
+                die();
+            } else {
+                $data['req'] = $this->upload->data('file_name');
             }
         }
 

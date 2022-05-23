@@ -37,6 +37,12 @@ class request_donor_model extends CI_Model {
         return $query->result();
     }
 
+    public function switch_status($id, $status){
+        $this->db->set('status', $status);
+        $this->db->where('id', $id);
+        $this->db->update($this->table);
+    }
+
     public function get_both_single($user_id){
         $this->db->select('*');
         $this->db->from($this->table);

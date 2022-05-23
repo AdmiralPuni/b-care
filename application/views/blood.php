@@ -315,6 +315,17 @@
                         data[i][key] = "Sudah Validasi";
                     }
                 }
+
+                //add a button to switch status
+                if (key == "status") {
+                    if (data[i][key] == "Belum Validasi") {
+                        data[i][key] = "<button class='btn btn-outline-success w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Sudah Validasi</button>";
+                    }
+                    else if (data[i][key] == "Sudah Validasi") {
+                        data[i][key] = "<button class='btn btn-outline-danger w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Belum Validasi</button>";
+                    }
+                }
+
                 html += "<td>" + data[i][key] + "</td>";
 
 
@@ -410,6 +421,34 @@
 
     function change_page(index) {
         fill_table(current_data, current_table, index, true);
+    }
+
+    function switch_status(id, status) {
+        console.log(id + " " + status);
+        //ask for confirmation
+        if (confirm("Apakah anda yakin?")) {
+            $.ajax({
+                url: "./api/v1/donor/switch",
+                type: "POST",
+                headers: {
+                    'secret': '1234'
+                },
+                data: {
+                    id: id,
+                    status: status
+                },
+                dataType: "json",
+                success: function (data) {
+                    console.log(data);
+                    if (data.status == "success") {
+                        load_data(current_table);
+                    }
+                },
+                error: function (data) {
+                    console.log(data);
+                }
+            });
+        }
     }
 
     //change active button

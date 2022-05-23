@@ -62,6 +62,7 @@ $route['api/v1/request/simple/plasma'] = 'api_request/get_simple_plasma';
 
 //donor routes / pasien
 $route['api/v1/donor/new'] = 'api_donor/new_donor';
+$route['api/v1/donor/switch'] = 'api_donor/switch_status';
 $route['api/v1/donor/blood'] = 'api_donor/get_blood';
 $route['api/v1/donor/plasma'] = 'api_donor/get_plasma';
 $route['api/v1/donor/simple/blood'] = 'api_donor/get_simple_blood';
