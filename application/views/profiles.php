@@ -187,7 +187,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Nama</th>
-                                    <th>TTL</th>
+                                    <th>Gol. Darah</th>
                                     <th>Alamat</th>
                                     <th>Domisili</th>
                                     <th>Action</th>
@@ -218,7 +218,7 @@
     var table_header = {
         "donor": {
             "title": "Daftar Pendonor",
-            "header": ['ID', 'Nama', 'TTL', 'Alamat', 'Domisili']
+            "header": ['ID', 'Nama', 'Gol. Darah', 'TTL', 'Alamat', 'Domisili']
         }
     };
 
@@ -352,6 +352,7 @@
                 <tr>
                     <td>${temp['user_id']}</td>
                     <td>${temp['name']}</td>
+                    <td>${temp['blood_type']}</td>
                     <td>${ttl}</td>
                     <td>${temp['alamat']}</td>
                     <td>${temp['domisili']}</td>
