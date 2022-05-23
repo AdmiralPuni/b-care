@@ -340,7 +340,12 @@
         $("#table-body").html("");
         for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
             temp = data[i];
-            
+
+            //if temp is undefined, break
+            if (temp == undefined) {
+                break;
+            }
+
             try {
                 ttl = temp['tempat_lahir'] + ", " + temp['tanggal_lahir'];
                 $("#table-body").append(`
@@ -357,8 +362,19 @@
                     </td>
                 </tr>
             `);
+
             } catch (error) {
                 console.log(error);
+            }
+
+            //check for distinct data, only for keys in distinct_data
+            if (rebuild_distinct) {
+                console.log("rebuild distinct");
+                for (var key in distinct_data) {
+                    if (distinct_data[key].indexOf(temp[key]) == -1) {
+                        distinct_data[key].push(temp[key]);
+                    }
+                }
             }
         }
 
@@ -370,6 +386,7 @@
                     $("#distinct-" + key).append('<option value="' + distinct_data[key][i] + '">' + distinct_data[key][i] + '</option>');
                 }
             }
+            console.log(distinct_data)
         }
     }
 
@@ -401,9 +418,9 @@
                 var match = true;
                 for (var key in distincts) {
                     if (new_data[i][key] != distincts[key]) {
-                            match = false;
-                            break;
-                        }
+                        match = false;
+                        break;
+                    }
                 }
                 if (!match) {
                     //remoev the line
