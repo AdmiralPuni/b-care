@@ -61,7 +61,7 @@
                             </div>
                         </div>
                         <div class="container-fluid p-2 bg-white shadow mb-3">
-                            <img class="img-fluid" src="https://pbs.twimg.com/profile_images/798555501067837440/HF8_0JeX_400x400.jpg" alt="">
+                            <img class="img-fluid w-100" src="https://pbs.twimg.com/profile_images/798555501067837440/HF8_0JeX_400x400.jpg" alt="">
                         </div>
                     </div>
                 </div>
