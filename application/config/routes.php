@@ -75,7 +75,7 @@ $route['api/v1/user/new'] = 'api_user/register';
 $route['api/v1/user/verify'] = 'api_user/verify';
 $route['api/v1/admin/verify'] = 'api_user/verify_admin';
 $route['api/v1/user/info'] = 'api_profile/get_single_donor';
-$route['api/v1/profile'] = 'api_donor/get_both_single';
+$route['api/v1/donor/user'] = 'api_donor/get_both_single';
 
 //user donor
 $route['api/v1/profile/new'] = 'api_profile/new_donor';

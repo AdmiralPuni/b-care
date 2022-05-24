@@ -253,6 +253,17 @@
             },
             desc: "Request password reset",
             type: "input"
+        },
+        {
+            name: "USER - DONOR HISTORY",
+            url: "api/v1/donor/user",
+            data: "user_id",
+            method: "POST",
+            form: {
+                user_id:"1"
+            },
+            desc: "history plasma & blood",
+            type: "input"
         }
     ]
 
