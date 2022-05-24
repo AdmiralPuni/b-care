@@ -83,7 +83,7 @@ class Api_donor extends CI_Controller {
         //check for empty fields
         foreach (array_keys($data) as $key) {
             //ignore req
-            if ($key == 'req') {
+            if ($key == 'req' || $key == 'form_answers') {
                 continue;
             }
             if(empty($data[$key])){
