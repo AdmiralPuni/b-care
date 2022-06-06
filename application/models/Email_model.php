@@ -90,6 +90,12 @@ class email_model extends CI_Model {
         $query = $this->db->get($this->table);
         $result = $query->row();
         $last_sent = $result->last_send;
+
+        //if last send is empty, return true
+        if(empty($last_sent)){
+            return true;
+        }
+
         $current_time = $this->current_time_iso();
         $diff = strtotime($current_time) - strtotime($last_sent);
         //if diff is more than 60 seconds, return true
