@@ -2,7 +2,7 @@ import email
 import time
 import smtplib
 import requests
-import json
+import csv
 import datetime
 
 #email setup
@@ -43,6 +43,7 @@ def send_reminder(client):
     '</body>'
     '</html>'.format(client['name'])
   )
+  server.send_message(msg)
 
 def fetch_clients():
   client_list = []
@@ -55,6 +56,10 @@ def fetch_clients():
       'name': client['name'],
       'donor_date': client['donor_date']
     }
+    #if email exists in client_list, skip
+    if temp['email'] in [x['email'] for x in client_list]:
+      continue
+
     client_list.append(temp)
 
   return client_list
@@ -62,7 +67,25 @@ def fetch_clients():
 def main():
   clients = fetch_clients()
   for client in clients:
-    print(client)
+    #check donor_date diff from today
+    donor_date = datetime.datetime.strptime(client['donor_date'], '%Y-%m-%d')
+    today = datetime.datetime.now()
+    diff = today - donor_date
+    diff = diff.days
+    print("CHECK | {:<40} | {} Days".format(client['email'], diff))
+
+    #if 3 months diff, send reminder
+    if diff >= 90:
+      print("SEND  | {}".format(client['email']))
+      send_reminder(client)
+    else:
+      print("SKIP  | {} ".format(client['email']))
+
+  #sleep program for 1 week
+  time.sleep(604800)
+  #restart program
+  main()
+
 
 
 if __name__ == '__main__':
