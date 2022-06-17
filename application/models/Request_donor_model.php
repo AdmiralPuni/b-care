@@ -97,7 +97,7 @@ class request_donor_model extends CI_Model {
         #sort by donor_date
         $this->db->order_by('donor_date', 'DESC');
         #get user email from profile table
-        $this->db->join('user', 'user.id = v_donor.donor_id');
+        $this->db->join('user', 'user.id = v_donor.user_id');
 
 
         $query = $this->db->get();

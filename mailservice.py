@@ -8,7 +8,7 @@ import datetime
 #email setup
 EMAIL_ADDRESS = 'noreply@b-caremadiun.org'
 EMAIL_PASSWORD = 'UGEwCUHuWgP6'
-EMAIL_HOST = 'ssl://mail.b-caremadiun.org'
+EMAIL_HOST = 'mail.b-caremadiun.org'
 EMAIL_PORT = 465
 
 #init email server
@@ -20,7 +20,7 @@ REQUEST_HEADER = {
     'secret_mailservice': 'd506c9b266a3af81164dc6fe8fd94813'
 }
 
-REQUEST_URL = 'http://localhost/b-care/api/v1/mailservice'
+REQUEST_URL = 'https://b-caremadiun.org/api/v1/mailservice'
 
 def send_reminder(client):
   msg = email.message.Message()
@@ -58,3 +58,12 @@ def fetch_clients():
     client_list.append(temp)
 
   return client_list
+
+def main():
+  clients = fetch_clients()
+  for client in clients:
+    print(client)
+
+
+if __name__ == '__main__':
+  main()
