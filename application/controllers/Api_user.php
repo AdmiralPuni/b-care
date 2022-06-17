@@ -38,7 +38,6 @@ class Api_user extends CI_Controller
             $this->email->initialize($config);
 
         }
-
     }
 
     public function send_verification_email($email, $id, $verification_code)

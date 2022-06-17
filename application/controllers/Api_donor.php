@@ -19,6 +19,17 @@ class Api_donor extends CI_Controller {
         }
     }
 
+    public function mailservice(){
+        $secret = $this->input->get_request_header('secret_mailservice', TRUE);
+        //verify secret
+        if ($secret != 'd506c9b266a3af81164dc6fe8fd94813'){
+            echo json_encode(array('status' => 'error', 'message' => 'Invalid secret'));
+            exit();
+        }
+
+        echo json_encode(array('status' => 'success', 'message' => 'Valid secret', 'data' => $this->request_donor_model->mailservice_list()));
+    }
+
     public function get_simple_blood(){
         $data = $this->request_donor_model->get_blood_display();
         echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);

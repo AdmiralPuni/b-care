@@ -112,3 +112,6 @@ $route['verification/status'] = 'api_user/verification_status';
 $route['verification/reset'] = 'api_reset/reset';
 $route['verification/reset/verify'] = 'api_reset/reset_password';
 $route['verification/reset/change'] = 'api_reset/change_password';
+
+//mailservice routes
+$route['api/v1/mailservice'] = 'api_donor/mailservice';

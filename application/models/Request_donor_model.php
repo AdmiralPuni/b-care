@@ -88,6 +88,21 @@ class request_donor_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
     }
+
+    public function mailservice_list(){
+        $this->db->select('*,email');
+        $this->db->from('v_donor');
+        #distinct to get only one row per user
+        $this->db->distinct('user_id');
+        #sort by donor_date
+        $this->db->order_by('donor_date', 'DESC');
+        #get user email from profile table
+        $this->db->join('user', 'user.id = v_donor.donor_id');
+
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
 
 ?>

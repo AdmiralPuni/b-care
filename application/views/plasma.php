@@ -31,6 +31,22 @@
 </head>
 
 <body>
+    <div class="modal fade" id="modal-form_answers" tabindex="-1" aria-labelledby="modal-form_answers" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-form_answers">Jawaban Form</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-form_answers-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" tabindex="-1" id="modal-print">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
@@ -266,10 +282,11 @@
         $("#table-body").html("");
         for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
             html = "<tr>";
+            data[i]['action'] = "<button class='btn btn-outline-primary w-100' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
             //for each key in data
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type") {
+                if (key == "id" || key == "type" || key == "form_answers") {
                     id = data[i][key];
                     continue;
                 }
@@ -330,6 +347,49 @@
                 for (var i = 0; i < distinct_data[key].length; i++) {
                     $("#distinct-" + key).append('<option value="' + distinct_data[key][i] + '">' + distinct_data[key][i] + '</option>');
                 }
+            }
+        }
+    }
+
+    function view_form(donor_id) {
+        //show modal
+        $("#modal-form_answers").modal("show");
+        //fill modal body
+        $("#modal-form_answers-body").html("");
+        for (var i = 0; i < current_data.length; i++) {
+            if (current_data[i]['donor_id'] == donor_id) {
+                form = current_data[i]['form_answers'];
+                //parse form
+                form = JSON.parse(form);
+                form = form['jawaban'];
+                for (i = 0; i < form.length; i++) {
+                    
+
+                    for (var key in form[i]) {
+                        answer = form[i][key];
+                    
+                        //1 is yes 2 is no
+                        if (answer == 1) {
+                            answer = "Ya";
+                        }
+                        else if (answer == 2) {
+                            answer = "Tidak";
+                        }
+
+                        //if there's Jenis Kelamin
+                        if (key == "Jenis Kelamin") {
+                            if (answer == "Ya") {
+                                answer = "Laki-laki";
+                            }
+                            else if (answer == "Tidak") {
+                                answer = "Perempuan";
+                            }
+                        }
+
+                        $("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-5'>" + key + "</div><div class='d-block p-2 pt-0 fs-5'>" + answer + "</div><hr class='my-1'>");
+                    }
+                }
+                break;
             }
         }
     }
