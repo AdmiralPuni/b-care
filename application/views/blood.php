@@ -303,7 +303,7 @@
             //for each key in data
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "req") {
+                if (key == "id" || key == "type" || key == "req" || key == "form_answers") {
                     continue;
                 }
                 html += "<td>" + data[i][key] + "</td>";
