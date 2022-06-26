@@ -30,6 +30,11 @@ class Api_donor extends CI_Controller {
         echo json_encode(array('status' => 'success', 'message' => 'Valid secret', 'data' => $this->request_donor_model->mailservice_list()));
     }
 
+    public function get_single(){
+        $id = $this->input->get('id');
+        echo json_encode(array('status' => 'success', 'message' => 'Valid secret', 'data' => $this->request_donor_model->get_single($id)));
+    }
+
     public function get_simple_blood(){
         $data = $this->request_donor_model->get_blood_display();
         echo json_encode(array('status' => 'success', 'data' => $data), JSON_PRETTY_PRINT);

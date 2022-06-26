@@ -59,4 +59,8 @@ class Pages extends CI_Controller
     {
         $this->load->view('reports');
     }
+
+    public function formprint(){
+        $this->load->view('formprint');
+    }
 }

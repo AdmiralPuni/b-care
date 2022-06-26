@@ -69,6 +69,8 @@ $route['api/v1/donor/simple/blood'] = 'api_donor/get_simple_blood';
 $route['api/v1/donor/simple/plasma'] = 'api_donor/get_simple_plasma';
 $route['api/v1/donor/simple/blood/range'] = 'api_donor/get_simple_blood_range';
 $route['api/v1/donor/simple/plasma/range'] = 'api_donor/get_simple_plasma_range';
+//single donor
+$route['api/v1/donpr/single'] = 'api_donor/get_single';
 
 //user management
 $route['api/v1/user/new'] = 'api_user/register';

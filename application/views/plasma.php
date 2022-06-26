@@ -32,7 +32,7 @@
 
 <body>
     <div class="modal fade" id="modal-form_answers" tabindex="-1" aria-labelledby="modal-form_answers" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal-form_answers">Jawaban Form</h5>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class="row row-cols-1 row-cols-md-2 m-0" id="modal-form_answers-body">
+                        <div class="row row-cols-2 row-cols-md-2 m-0" id="modal-form_answers-body">
 
                         </div>
                     </div>
