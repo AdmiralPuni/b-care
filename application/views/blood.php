@@ -433,6 +433,14 @@
                         //$("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-5'>" + key + "</div><div class='d-block p-2 pt-0 fs-5'>" + answer + "</div><hr class='my-1'>");
                     }
                 }
+
+                //append a box for signature
+                html = '<div class="col p-1">';
+                html += '<div class="d-block border border-dark p-3"></div>';
+                html += '<div class="d-block border border-dark px-3 py-5"></div>';
+                html += '<div class="d-block border border-dark p-3"></div>';
+                html += '</div>';
+                $("#modal-form_answers-body").append(html);
                 break;
             }
         }
