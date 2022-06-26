@@ -392,13 +392,13 @@
                             }
                         }
                         html = '<div class="col p-1">';
-                        html += '<div class="d-flex w-100 justify-content-between">';
+                        html += '<div class="d-flex w-100 flex-column">';
                         html += '<span class="fs-6">';
                         html += key;
-                        html += '</div>';
+                        html += '</span>';
                         html += '<span class="fs-6 fw-bold">';
                         html += answer;
-                        html += '</div>';
+                        html += '</span>';
                         html += '</div>';
 
                         $("#modal-form_answers-body").append(html);
