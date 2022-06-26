@@ -38,8 +38,12 @@
                     <h5 class="modal-title" id="modal-form_answers">Jawaban Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="modal-form_answers-body">
-                    ...
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row row-cols-2 row-cols-md-2 m-0" id="modal-form_answers-body">
+
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -412,9 +416,21 @@
                             else if (answer == "Tidak") {
                                 answer = "Perempuan";
                             }
-                        }
+                        }  
+                        html = '<div class="col p-1">';
+                        html += '<div class="d-flex w-100 flex-column">';
+                        html += '<span class="fs-6">';
+                        html += key;
+                        html += '</span>';
+                        html += '<span class="fs-6 fw-bold">';
+                        html += answer;
+                        html += '</span>';
+                        html += '</div>';
 
-                        $("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-5'>" + key + "</div><div class='d-block p-2 pt-0 fs-5'>" + answer + "</div><hr class='my-1'>");
+                        $("#modal-form_answers-body").append(html);
+
+
+                        //$("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-5'>" + key + "</div><div class='d-block p-2 pt-0 fs-5'>" + answer + "</div><hr class='my-1'>");
                     }
                 }
                 break;
