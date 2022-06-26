@@ -391,8 +391,19 @@
                                 answer = "Perempuan";
                             }
                         }
+                        html = '<div class="col p-1>';
+                        html += '<div class="d-flex w-100 justify-content-between">';
+                        html += '<span class="fs-6">';
+                        html += key;
+                        html += '</div>';
+                        html += '<span class="fs-6 fw-bold">';
+                        html += answer;
+                        html += '</div>';
+                        html += '</div>';
 
-                        $("#modal-form_answers-body").append("<div class='col p-1'><div class='d-block p-2 pb-1 fs-6'>" + key + "</div><div class='d-block p-2 pt-0 fs-6'>" + answer + "</div><hr class='my-1'></div>");
+                        $("#modal-form_answers-body").append(html);
+
+                        //$("#modal-form_answers-body").append("<div class='col p-1'><div class='d-block p-2 pb-1 fs-6'>" + key + "</div><div class='d-block p-2 pt-0 fs-6'>" + answer + "</div><hr class='my-1'></div>");
                     }
                 }
                 break;
