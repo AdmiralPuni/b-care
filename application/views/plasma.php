@@ -39,8 +39,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container" id="modal-form_answers-body">
-                        
+                    <div class="container">
+                        <div class="row row-cols-1 row-cold-md-2 m-0" id="modal-form_answers-body">
+
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -390,7 +392,7 @@
                             }
                         }
 
-                        $("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-6'>" + key + "</div><div class='d-block p-2 pt-0 fs-6'>" + answer + "</div><hr class='my-1'>");
+                        $("#modal-form_answers-body").append("<div class='col p-1'><div class='d-block p-2 pb-1 fs-6'>" + key + "</div><div class='d-block p-2 pt-0 fs-6'>" + answer + "</div><hr class='my-1'></div>");
                     }
                 }
                 break;
