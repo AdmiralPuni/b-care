@@ -93,6 +93,7 @@ $route['api/v1/stock/blood/update'] = 'api_stock/update_blood';
 $route['api/v1/event/new'] = 'api_event/insert_event';
 $route['api/v1/event/all'] = 'api_event/get_all_events';
 $route['api/v1/event/active'] = 'api_event/get_active_event';
+$route['api/v1/event/delete'] = 'api_event/delete_event';
 
 //static pages
 $route['dashboard'] = 'pages/dashboard';

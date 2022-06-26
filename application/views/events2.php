@@ -239,10 +239,37 @@
                         <button class="btn btn-outline-dark rounded-0 w-100 text-start" id="details-button" onClick="show_details(${i})">
                             <i class="bi bi-eye"></i> Lihat
                         </button>
+                        <!-- delete button --!>
+                        <button class="btn btn-outline-danger rounded-0 w-100 text-start" id="delete-button" onClick="delete_data(${i})">
+                            <i class="bi bi-trash"></i> Hapus
+                        </button>
                     </td>
                 </tr>
             `);
         }
+    }
+
+    function delete_data(index) {
+        var api_key = "1234";
+        header = {
+            'secret': api_key
+        };
+        $.ajax({
+            url: "api/v1/event/delete",
+            type: "POST",
+            data: {
+                id: index
+            },
+            headers: header,
+            dataType: "json",
+            success: function (data) {
+                console.log(data.message);
+                load_data();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
     }
 
     function change_page(index) {

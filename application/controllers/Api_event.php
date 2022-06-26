@@ -36,6 +36,12 @@ class Api_event extends CI_Controller {
         echo json_encode(array('status' => 'success', 'message' => 'Event ' . $id . ' is now ' . $active));
     }
 
+    function delete_event(){
+        $id = $this->input->post('id');
+        $this->event_model->delete($id);
+        echo json_encode(array('status' => 'success', 'message' => 'Event ' . $id . ' deleted'));
+    }
+
     function insert_event(){
         $data = array(
             'name' => $this->input->post('name'),

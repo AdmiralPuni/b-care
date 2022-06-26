@@ -19,6 +19,15 @@ class event_model extends CI_Model {
         $this->db->insert($this->table, $data);
     }
 
+    function delete($id){
+        $this->db->where('id', $id);
+        if ($this->db->delete($this->table)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     function get_all_events(){
         $this->db->select('*');
         $this->db->order_by('id', 'desc');
