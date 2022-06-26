@@ -391,7 +391,7 @@
                                 answer = "Perempuan";
                             }
                         }
-                        html = '<div class="col p-1>';
+                        html = '<div class="col p-1">';
                         html += '<div class="d-flex w-100 justify-content-between">';
                         html += '<span class="fs-6">';
                         html += key;
