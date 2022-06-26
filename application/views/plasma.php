@@ -40,7 +40,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="container">
-                        <div class="row row-cols-1 row-cold-md-2 m-0" id="modal-form_answers-body">
+                        <div class="row row-cols-1 row-cols-md-2 m-0" id="modal-form_answers-body">
 
                         </div>
                     </div>
