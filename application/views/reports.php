@@ -186,6 +186,11 @@
                 //fill table
                 $("#table-print").html("");
                 for (let i = 0; i < data.length; i++) {
+                    //skip form_answers, user_id, and donor_id
+                    if (keys[i] == "form_answers" || keys[i] == "user_id" || keys[i] == "donor_id") {
+                        continue;
+                    }
+
                     let row = `<tr>`;
                     for (let j = 0; j < keys.length; j++) {
                         row += `<td class="text-center">${data[i][keys[j]]}</td>`;
@@ -235,6 +240,11 @@
                 //fill table
                 $("#table-print").html("");
                 for (let i = 0; i < data.length; i++) {
+                    //skip form_answers, user_id, and donor_id
+                    if (keys[i] == "form_answers" || keys[i] == "user_id" || keys[i] == "donor_id") {
+                        continue;
+                    }
+                    
                     let row = `<tr>`;
                     for (let j = 0; j < keys.length; j++) {
                         row += `<td class="text-center">${data[i][keys[j]]}</td>`;

@@ -240,7 +240,7 @@
                             <i class="bi bi-eye"></i> Lihat
                         </button>
                         <!-- delete button --!>
-                        <button class="btn btn-outline-danger rounded-0 w-100 text-start" id="delete-button" onClick="delete_data(${i})">
+                        <button class="btn btn-outline-danger rounded-0 w-100 text-start" id="delete-button" onClick="delete_data(${temp['id']})">
                             <i class="bi bi-trash"></i> Hapus
                         </button>
                     </td>
@@ -250,6 +250,12 @@
     }
 
     function delete_data(index) {
+        //confirm delete
+        var r = confirm("Apakah anda yakin ingin menghapus data ini?");
+        if (!r) {
+            return;
+        }
+
         var api_key = "1234";
         header = {
             'secret': api_key
@@ -267,7 +273,7 @@
                 load_data();
             },
             error: function (data) {
-                console.log(data);
+                console.log(data.message);
             }
         });
     }

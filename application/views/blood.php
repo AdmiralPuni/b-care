@@ -303,7 +303,7 @@
             //for each key in data
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "req" || key == "form_answers") {
+                if (key == "id" || key == "type" || key == "req" || key == "form_answers" || key == "user_id") {
                     continue;
                 }
                 html += "<td>" + data[i][key] + "</td>";
@@ -321,7 +321,7 @@
             data[i]['action'] = "<button class='btn btn-outline-primary w-100' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "req" || key == "form_answers") {
+                if (key == "id" || key == "type" || key == "req" || key == "form_answers" || key == "user_id") {
                     continue;
                 }
                 if (key == "status" && rebuild_distinct) {

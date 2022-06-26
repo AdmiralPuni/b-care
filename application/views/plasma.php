@@ -32,17 +32,21 @@
 
 <body>
     <div class="modal fade" id="modal-form_answers" tabindex="-1" aria-labelledby="modal-form_answers" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal-form_answers">Jawaban Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body" id="modal-form_answers-body">
-                    ...
+                <div class="modal-body">
+                    <div class="container" id="modal-form_answers-body">
+                        
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- onclick call window print -->
+                    <button type="button" class="btn btn-primary" onclick="window.print()">Print</button>
                 </div>
             </div>
         </div>
@@ -268,7 +272,7 @@
             //for each key in data
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "form_answers") {
+                if (key == "id" || key == "type" || key == "form_answers" || key == "user_id") {
                     continue;
                 }
                 html += "<td>" + data[i][key] + "</td>";
@@ -286,7 +290,7 @@
             //for each key in data
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "form_answers") {
+                if (key == "id" || key == "type" || key == "form_answers" || key == "user_id") {
                     id = data[i][key];
                     continue;
                 }
@@ -386,7 +390,7 @@
                             }
                         }
 
-                        $("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-5'>" + key + "</div><div class='d-block p-2 pt-0 fs-5'>" + answer + "</div><hr class='my-1'>");
+                        $("#modal-form_answers-body").append("<div class='d-block p-2 pb-1 fs-6'>" + key + "</div><div class='d-block p-2 pt-0 fs-6'>" + answer + "</div><hr class='my-1'>");
                     }
                 }
                 break;
