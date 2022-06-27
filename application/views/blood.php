@@ -323,13 +323,19 @@
         $("#table-body").html("");
         for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
             html = "<tr>";
+            //data[i]['action'] = "<button class='btn btn-outline-primary w-100' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
             //for each key in data
-            data[i]['action'] = "<button class='btn btn-outline-primary w-100 py-1' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
             for (var key in data[i]) {
                 //ignore first key
-                if (key == "id" || key == "type" || key == "req" || key == "form_answers" || key == "user_id") {
+                if (key == "id" || key == "type" || key == "form_answers" || key == "user_id" || key == 'req') {
+                    id = data[i][key];
                     continue;
                 }
+                //if key is req, add link
+                if (key == 'req') {
+                    data[i]['req'] = "<a target='_blank' href='./uploads/req/" + data[i]['req'] + "'>" + data[i]['req'] + "</a>";
+                }
+
                 if (key == "status" && rebuild_distinct) {
                     if (data[i][key] == "0") {
                         data[i][key] = "Berhasil";
@@ -345,18 +351,24 @@
                 //add a button to switch status
                 if (key == "status") {
                     if (data[i][key] == "Berhasil") {
-                        data[i][key] = "<button class='btn btn-outline-success w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Berhasil</button>";
+                        html += "<td><button class='btn btn-outline-success w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Berhasil</button></td>";
                     }
                     else if (data[i][key] == "Gagal") {
-                        data[i][key] = "<button class='btn btn-outline-danger w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 2)'>Gagal</button>";
+                        html += "<td><button class='btn btn-outline-danger w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 2)'>Gagal</button></td>";
                     }
                     else if (data[i][key] == "Tidak Lolos") {
-                        data[i][key] = "<button class='btn btn-outline-dark w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Tidak Lolos</button>";
+                        html += "<td><button class='btn btn-outline-dark w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Tidak Lolos</button></td>";
                     }
                 }
+                else{
+                    html += "<td>" + data[i][key] + "</td>";
+                }
 
-                html += "<td>" + data[i][key] + "</td>";
 
+                //if last key
+                if(key == 'created'){
+                    html += "<td><button class='btn btn-outline-primary w-100' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button></td>";
+                }
 
                 //check for distinct data, only for keys in distinct_data
                 if (rebuild_distinct) {

@@ -190,13 +190,17 @@
                 $("#table-print").html("");
                 for (let i = 0; i < data.length; i++) {
                     //skip form_answers, user_id, and donor_id
-                    
-                    
                     let row = `<tr>`;
                     for (let j = 0; j < keys.length; j++) {
                         if (keys[j] == "form_answers" || keys[j] == "user_id" || keys[j] == "id") {
                             continue;
                         }
+
+                        //replace status with text, 0 = Berhasil, 1 = Gagal, 2 = Tidak Lolos
+                        if (keys[j] == "status") {
+                            data[i][keys[j]] = data[i][keys[j]] == 0 ? "Berhasil" : data[i][keys[j]] == 1 ? "Gagal" : "Tidak Lolos";
+                        }
+
                         row += `<td class="text-center">${data[i][keys[j]]}</td>`;
                     }
                     row += `</tr>`;
@@ -255,6 +259,12 @@
                         if (keys[j] == "form_answers" || keys[j] == "user_id" || keys[j] == "id") {
                             continue;
                         }
+
+                        //replace status with text, 0 = Berhasil, 1 = Gagal, 2 = Tidak Lolos
+                        if (keys[j] == "status") {
+                            data[i][keys[j]] = data[i][keys[j]] == 0 ? "Berhasil" : data[i][keys[j]] == 1 ? "Gagal" : "Tidak Lolos";
+                        }
+
                         row += `<td class="text-center">${data[i][keys[j]]}</td>`;
                     }
                     row += `</tr>`;
