@@ -32,7 +32,7 @@
 
 <body>
     <div class="modal fade" id="modal-form_answers" tabindex="-1" aria-labelledby="modal-form_answers" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="modal-form_answers">Jawaban Form</h5>
@@ -47,6 +47,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <!-- onclick call window print -->
+                    <button type="button" class="btn btn-primary" onclick="window.print()">Print</button>
                 </div>
             </div>
         </div>
@@ -322,7 +324,7 @@
         for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
             html = "<tr>";
             //for each key in data
-            data[i]['action'] = "<button class='btn btn-outline-primary w-100' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
+            data[i]['action'] = "<button class='btn btn-outline-primary w-100 py-1' onClick='view_form(" + data[i]['donor_id'] + ")'>Lihat Form</button>";
             for (var key in data[i]) {
                 //ignore first key
                 if (key == "id" || key == "type" || key == "req" || key == "form_answers" || key == "user_id") {
@@ -330,20 +332,26 @@
                 }
                 if (key == "status" && rebuild_distinct) {
                     if (data[i][key] == "0") {
-                        data[i][key] = "Belum Validasi";
+                        data[i][key] = "Berhasil";
                     }
-                    else {
-                        data[i][key] = "Sudah Validasi";
+                    else if(data[i][key] == "1") {
+                        data[i][key] = "Gagal";
+                    }
+                    else if(data[i][key] == "2") {
+                        data[i][key] = "Tidak Lolos";
                     }
                 }
 
                 //add a button to switch status
                 if (key == "status") {
-                    if (data[i][key] == "Belum Validasi") {
-                        data[i][key] = "<button class='btn btn-outline-success w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Sudah Validasi</button>";
+                    if (data[i][key] == "Berhasil") {
+                        data[i][key] = "<button class='btn btn-outline-success w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Berhasil</button>";
                     }
-                    else if (data[i][key] == "Sudah Validasi") {
-                        data[i][key] = "<button class='btn btn-outline-danger w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Belum Validasi</button>";
+                    else if (data[i][key] == "Gagal") {
+                        data[i][key] = "<button class='btn btn-outline-danger w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 2)'>Gagal</button>";
+                    }
+                    else if (data[i][key] == "Tidak Lolos") {
+                        data[i][key] = "<button class='btn btn-outline-dark w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Tidak Lolos</button>";
                     }
                 }
 

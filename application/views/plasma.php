@@ -296,26 +296,33 @@
                     id = data[i][key];
                     continue;
                 }
-                if (key == "status" && rebuild_distinct) {
-                    if (data[i][key] == "0") {
-                        data[i][key] = "Belum Validasi";
-                    }
-                    else {
-                        data[i][key] = "Sudah Validasi";
-                    }
-                }
                 //if key is req, add link
                 if (key == 'req') {
                     data[i]['req'] = "<a target='_blank' href='./uploads/req/" + data[i]['req'] + "'>" + data[i]['req'] + "</a>";
                 }
 
+                if (key == "status" && rebuild_distinct) {
+                    if (data[i][key] == "0") {
+                        data[i][key] = "Berhasil";
+                    }
+                    else if(data[i][key] == "1") {
+                        data[i][key] = "Gagal";
+                    }
+                    else if(data[i][key] == "2") {
+                        data[i][key] = "Tidak Lolos";
+                    }
+                }
+
                 //add a button to switch status
                 if (key == "status") {
-                    if (data[i][key] == "Belum Validasi") {
-                        data[i][key] = "<button class='btn btn-outline-success w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Sudah Validasi</button>";
+                    if (data[i][key] == "Berhasil") {
+                        data[i][key] = "<button class='btn btn-outline-success w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 1)'>Berhasil</button>";
                     }
-                    else if (data[i][key] == "Sudah Validasi") {
-                        data[i][key] = "<button class='btn btn-outline-danger w-100' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Belum Validasi</button>";
+                    else if (data[i][key] == "Gagal") {
+                        data[i][key] = "<button class='btn btn-outline-danger w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 2)'>Gagal</button>";
+                    }
+                    else if (data[i][key] == "Tidak Lolos") {
+                        data[i][key] = "<button class='btn btn-outline-dark w-100 py-1' onClick='switch_status(" + data[i]['donor_id'] + ", 0)'>Tidak Lolos</button>";
                     }
                 }
 
