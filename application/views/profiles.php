@@ -76,7 +76,10 @@
                             <th>Pekerjaan</th>
                             <td id="details-job"></td>
                         </tr>
-
+                        <tr>
+                            <th>NIK</th>
+                            <td id="details-nik"></td>
+                        </tr>
                     </table>
                 </div>
 
@@ -469,6 +472,7 @@
         $("#details-phone").text(temp['no_hp']);
         $("#details-card").text(temp['no_kartu']);
         $("#details-job").text(temp['pekerjaan']);
+        $("#details-nik").text(temp['nik']);
         modal_detail.show();
     }
 
