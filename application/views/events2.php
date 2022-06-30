@@ -108,9 +108,9 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nama</th>
-                                            <th>TTL</th>
-                                            <th>Alamat</th>
-                                            <th>Domisili</th>
+                                            <th>Tanggal & Waktu</th>
+                                            <th>Lokasi</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -218,15 +218,24 @@
     }
 
     function fill_table(data, page) {
+        //var temp;
         $("#table-body").html("");
-        for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page; i++) {
+
+        page_less = 0;
+        //if length of data is less than items per page
+        if (data.length < items_per_page) {
+            page_less = items_per_page - data.length;
+        }
+        else{
+            page_less = 0;
+        }
+
+
+        for (var i = page * items_per_page; i < (page * items_per_page) + items_per_page - page_less; i++) {
             temp = data[i];
-            if(temp['active'] == '1'){
-                temp['active'] = 'AKTIF';
-            }
-            else{
-                temp['active'] = 'TIDAK AKTIF';
-            }
+            //console.log(temp)
+            //change active to 1 = AKTIF, else TIDAK AKTIF
+            temp['active'] = temp['active'] == 1 ? 'AKTIF' : 'TIDAK AKTIF';
 
             $("#table-body").append(`
                 <tr>
