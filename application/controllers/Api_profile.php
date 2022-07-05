@@ -123,13 +123,13 @@ class Api_profile extends CI_Controller {
 
         //check userdata
         foreach (array_keys($userdata) as $key) {
-            if(empty($userdata[$key])){
+            if(empty($userdata[$key]) || $userdata[$key] == 'null' || $userdata[$key] == 'undefined' || $userdata[$key] == ''){
                 echo json_encode(array('status' => 'error', 'message' => 'Please fill all fields', 'data' => $userdata), JSON_PRETTY_PRINT);
                 die();
             }
         }
 
-        $name = explode(' ', $user_data->name);
+        $name = explode(' ', $userdata->name);
         $concat_name = '';
         foreach ($name as $n) {
             $concat_name .= $n[0];
