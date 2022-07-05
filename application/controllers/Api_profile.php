@@ -129,7 +129,7 @@ class Api_profile extends CI_Controller {
             }
         }
 
-        $name = explode(' ', $userdata->name);
+        $name = explode(' ', $userdata['name']);
         $concat_name = '';
         foreach ($name as $n) {
             $concat_name .= $n[0];
