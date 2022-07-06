@@ -75,7 +75,7 @@ def main():
     print("CHECK | {:<40} | {} Days".format(client['email'], diff))
 
     #if 3 months diff, send reminder
-    if diff >= 90:
+    if diff >= 90 && diff <97:
       print("SEND  | {}".format(client['email']))
       send_reminder(client)
     else:

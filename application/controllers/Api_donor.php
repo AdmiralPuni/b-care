@@ -8,6 +8,7 @@ class Api_donor extends CI_Controller {
         parent::__construct();
         $this->load->model('request_donor_model');
         $this->load->model('api_model');
+        $this->load->model('user_model');
 
         //get secret from header
         $secret = $this->input->get_request_header('secret', TRUE);
@@ -17,6 +18,28 @@ class Api_donor extends CI_Controller {
             echo json_encode(array('status' => 'error', 'message' => 'Invalid secret'));
             exit();
         }
+
+        $this->load->library('email');
+
+        $config['protocol'] = 'smtp';
+        $config['smtp_host'] = 'ssl://mail.b-caremadiun.org';
+        $config['smtp_port'] = '465';
+        $config['smtp_user'] = 'noreply@b-caremadiun.org';
+        $config['smtp_pass'] = 'UGEwCUHuWgP6';
+        $config['mailtype'] = 'html';
+        $config['charset'] = 'iso-8859-1';
+        $config['wordwrap'] = true;
+        $config['newline'] = "\r\n";
+        $this->email->initialize($config);
+    }
+
+    public function send_email($email, $payload)
+    {
+        $this->email->from('noreply@b-caremadiun.org', 'B-Care Madiun');
+        $this->email->to($email);
+        $this->email->subject('Informasi Donor B-Care Madiun');
+        $this->email->message($payload);
+        $this->email->send();
     }
 
     public function mailservice(){
@@ -77,6 +100,24 @@ class Api_donor extends CI_Controller {
         $id = $this->input->post('id');
         $status = $this->input->post('status');
         $this->request_donor_model->switch_status($id, $status);
+
+        $payload = "";
+        if ($status == "0"){
+            $payload = "Donor telah diterima";
+        } 
+        else if ($status == "1"){
+            $payload = "Donor gagal dijalankan";
+        }
+        else if ($status == "2"){
+            $payload = "Pengajuan donor ditolak";
+        }
+
+        //get email from id
+        $email = $this->user_model->email_by_id($id);
+
+        //send email
+        $this->send_email($email, $payload);
+
         echo json_encode(array('status' => 'success', 'message' => 'Status changed'), JSON_PRETTY_PRINT);
     }
 
