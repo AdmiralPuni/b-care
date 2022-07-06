@@ -97,6 +97,15 @@ class request_donor_model extends CI_Model {
         return $query->result();
     }
 
+    public function get_user_id($id){
+        $this->db->select('*');
+        $this->db->from('v_donor');
+        $this->db->where('donor_id', $id);
+        $query = $this->db->get();
+        $query = $query->result();
+        return $query[0]->user_id;
+    }
+
     public function mailservice_list(){
         $this->db->select('*,email');
         $this->db->from('v_donor');

@@ -113,7 +113,7 @@ class Api_donor extends CI_Controller {
         }
 
         //get email from id
-        $email = $this->user_model->email_by_id($id);
+        $email = $this->request_donor_model->get_user_id($id);
 
         //send email
         $this->send_email($email, $payload);
