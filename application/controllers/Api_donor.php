@@ -103,13 +103,13 @@ class Api_donor extends CI_Controller {
 
         $payload = "";
         if ($status == "0"){
-            $payload = "Donor telah diterima";
+            $payload = "Kami ucapkan terima kasih atas niat baik anda untuk kesehatan dengan melakukan donor darah. Kegiatan donor anda BERHASIL , sampai jumpa untuk 3 bulan ke depan. (Tim UTD PMI Kota Madiun)";
         } 
         else if ($status == "1"){
-            $payload = "Donor gagal dijalankan";
+            $payload = "Kami ucapkan terima kasih atas niat baik anda untuk kesehatan dengan melakukan donor darah. Mohon maaf terkait data yang telah kami cek, status donor anda GAGAL. Silakan untuk lakukan pemulihan kesehatan terlebih dahulu. (Tim UTD PMI Kota Madiun)";
         }
         else if ($status == "2"){
-            $payload = "Pengajuan donor ditolak";
+            $payload = "Kami ucapkan terima kasih atas niat baik anda untuk kesehatan dengan melakukan donor darah. Mohon maaf terkait data yang telah kami cek, status donor anda TIDAK LOLOS. Silakan untuk lakukan pemulihan kesehatan terlebih dahulu. (Tim UTD PMI Kota Madiun)";
         }
 
         //get email from id
