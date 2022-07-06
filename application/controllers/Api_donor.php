@@ -118,7 +118,7 @@ class Api_donor extends CI_Controller {
         //send email
         $this->send_email($email, $payload);
 
-        echo json_encode(array('status' => 'success', 'message' => 'Status changed'), JSON_PRETTY_PRINT);
+        echo json_encode(array('status' => 'success', 'message' => 'Status changed', 'email' => $email), JSON_PRETTY_PRINT);
     }
 
     public function get_both_single(){
