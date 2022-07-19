@@ -18,7 +18,7 @@ class Api_reset extends CI_Controller
         $config['smtp_host'] = 'ssl://mail.b-caremadiun.org';
         $config['smtp_port'] = '465';
         $config['smtp_user'] = 'noreply@b-caremadiun.org';
-        $config['smtp_pass'] = 'UGEwCUHuWgP6';
+        $config['smtp_pass'] = 'COPPERANDHOLD1234';
         $config['mailtype'] = 'html';
         $config['charset'] = 'iso-8859-1';
         $config['wordwrap'] = true;

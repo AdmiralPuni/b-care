@@ -7,7 +7,7 @@ import datetime
 
 #email setup
 EMAIL_ADDRESS = 'noreply@b-caremadiun.org'
-EMAIL_PASSWORD = 'UGEwCUHuWgP6'
+EMAIL_PASSWORD = 'COPPERANDHOLD1234'
 EMAIL_HOST = 'mail.b-caremadiun.org'
 EMAIL_PORT = 465
 
