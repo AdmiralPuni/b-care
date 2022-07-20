@@ -83,6 +83,12 @@ class email_model extends CI_Model {
         $this->db->update($this->table);
     }
 
+    function update_temp_code($id, $temp_code){
+        $this->db->set('temp_code', $temp_code);
+        $this->db->where('user_id', $id);
+        $this->db->update($this->table);
+    }
+
     //if last send time is more than more than 1 minute return true
     function is_time_to_send($id){
         $this->db->select('last_send');

@@ -173,6 +173,7 @@ class Api_user extends CI_Controller
 
             if ($this->email_model->is_time_to_send($id)) {
                 $this->send_verification_email($email, $id, $verification_code);
+                $this->email_model->update_temp_code($id, $verification_code)
                 echo json_encode(array('status' => 'success', 'message' => 'Email sent'));
             } else {
                 echo json_encode(array('status' => 'error', 'message' => 'Waiting...'));
